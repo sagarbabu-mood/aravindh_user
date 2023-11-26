@@ -1,0 +1,52 @@
+.menuDisplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.menu {
+  background-color: whitesmoke;
+  padding: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.button-style {
+  border: 0px;
+  background-color: transparent;
+}
+.menuList {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+.cal {
+  align-self: center;
+}
+.dishNameStyle {
+  font-weight: bold;
+}
+.dishImg {
+  width: 200px;
+  height: 200px;
+}
+.cartButton {
+  color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: green;
+  width: 98px;
+  border-radius: 10px;
+}
+.sub {
+  color: aliceblue;
+  font-weight: bold;
+  padding: 10px;
+}
+.cartCount {
+  align-self: center;
+  margin-top: 11px;
+}
