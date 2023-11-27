@@ -20,9 +20,12 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+  border-radius: 5px;
 }
 .cal {
   align-self: center;
+  color: orange;
+  font-weight: bold;
 }
 .dishNameStyle {
   font-weight: bold;
@@ -30,6 +33,7 @@
 .dishImg {
   width: 200px;
   height: 200px;
+  border-radius: 3px;
 }
 .cartButton {
   color: aliceblue;
@@ -49,4 +53,23 @@
 .cartCount {
   align-self: center;
   margin-top: 11px;
+}
+
+.carts {
+  font-weight: bold;
+  margin-top: 14px;
+}
+.cart-icon {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.cart-count {
+  background-color: orange;
+  color: aliceblue;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

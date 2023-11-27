@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {BiFoodTag} from 'react-icons/bi'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 import './index.css'
 
@@ -73,8 +74,17 @@ const Header = props => {
 
   return (
     <div>
-      <div>
+      <div className="d-flex flex-row justify-content-between p-2">
         <h1>{name}</h1>
+        <div className="d-flex flex-row justify-content-center">
+          <p className="carts">My Orders</p>
+          <p className="d-flex flex-row">
+            <AiOutlineShoppingCart size="30px" className="cart-icon" />
+            <div className="cart-count">
+              <p>0</p>
+            </div>
+          </p>
+        </div>
       </div>
 
       <div>
