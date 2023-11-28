@@ -1,31 +1,46 @@
 import {useState} from 'react'
 import {BiFoodTag} from 'react-icons/bi'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
+import {connect} from 'react-redux'
+import {increment, decrement} from '../../redux/action'
 
 import './index.css'
 
 const Header = props => {
-  const {name, menu} = props
+  const {name, menu, cart} = props
 
   const [menuDisplay, setMenuDisplay] = useState(menu[0])
-  console.log(menu)
-  console.log(menuDisplay)
+  //   console.log(props)
+  //   console.log(menuDisplay)
 
   const onChangeMenu = m => {
     const res = menu.filter(each => each.menuCategoryId === m)
     setMenuDisplay(res[0])
   }
-  const addingToCart = () => (
-    <div className="cartButton">
-      <button className="button-style sub" type="button">
-        -
-      </button>
-      <p className="cartCount">0</p>
-      <button className="button-style sub" type="button">
-        +
-      </button>
-    </div>
-  )
+
+  const addingToCart = () => {
+    const {increment: localIncrement, decrement: localDecrement} = props
+
+    return (
+      <div className="cartButton">
+        <button
+          onClick={localDecrement}
+          className="button-style sub"
+          type="button"
+        >
+          -
+        </button>
+        <p className="cartCount">0</p>
+        <button
+          onClick={localIncrement}
+          className="button-style sub"
+          type="button"
+        >
+          +
+        </button>
+      </div>
+    )
+  }
 
   const menuList = () => {
     const x = '0'
@@ -34,7 +49,7 @@ const Header = props => {
       <div>
         <ul className="list-unstyled p-2">
           {menuDisplay?.categoryDishes?.map(each => (
-            <li key={each.menuCategoryId} className="menuList m-1">
+            <li key={each.dishId} className="menuList m-1">
               <div>
                 <BiFoodTag
                   size="25px"
@@ -42,8 +57,9 @@ const Header = props => {
                 />
                 <p className="dishNameStyle">{each.dishName}</p>
                 <div className="d-flex flex-row">
-                  <p className="m-1">{each.dishCurrency}</p>
-                  <p className="m-1">{each.dishPrice}</p>
+                  <p className="m-1">
+                    {each.dishCurrency} {each.dishPrice}
+                  </p>
                 </div>
                 <div>
                   <p>{each.dishDescription}</p>
@@ -52,7 +68,7 @@ const Header = props => {
                   {each.dishAvailability ? (
                     addingToCart()
                   ) : (
-                    <p className="text-danger">No Available</p>
+                    <p className="text-danger">Not available</p>
                   )}
                 </div>
                 <div>
@@ -78,12 +94,12 @@ const Header = props => {
         <h1>{name}</h1>
         <div className="d-flex flex-row justify-content-center">
           <p className="carts">My Orders</p>
-          <p className="d-flex flex-row">
+          <div className="d-flex flex-row">
             <AiOutlineShoppingCart size="30px" className="cart-icon" />
             <div className="cart-count">
-              <p>0</p>
+              <p>{cart}</p>
             </div>
-          </p>
+          </div>
         </div>
       </div>
 
@@ -111,4 +127,13 @@ const Header = props => {
   )
 }
 
-export default Header
+const mapStateToProps = state => ({
+  cart: state.cart,
+})
+
+const mapDispatchToProps = {
+  increment,
+  decrement,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

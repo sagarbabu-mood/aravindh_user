@@ -10,7 +10,7 @@ const loadingProgress = {
 }
 
 class Home extends Component {
-  state = {apiData: [], currentItem: '', displayStatus: loadingProgress.INITIAL}
+  state = {apiData: [], displayStatus: loadingProgress.INITIAL}
 
   componentDidMount() {
     this.getApi()
@@ -75,7 +75,7 @@ class Home extends Component {
   //   }
 
   render() {
-    const {apiData, currentItem} = this.state
+    const {apiData} = this.state
     console.log(apiData[0])
 
     return (
